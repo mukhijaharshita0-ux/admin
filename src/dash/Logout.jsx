@@ -5,13 +5,13 @@ export default function Logout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    
+    // Clear tokens
     localStorage.removeItem("token");
     localStorage.removeItem("tokenExpiry");
 
-    
+    // Redirect to login after 2 seconds
     const timer = setTimeout(() => {
-      navigate("/page/login", { replace: true });
+      navigate("/login", { replace: true });
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -27,7 +27,7 @@ export default function Logout() {
       </p>
 
       <button
-        onClick={() => navigate("/page/login", { replace: true })}
+        onClick={() => navigate("/login", { replace: true })}
         className="px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-all duration-200"
       >
         Go Back to Login Now

@@ -7,6 +7,7 @@ import TableChartIcon from "@mui/icons-material/TableChart";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Face6Icon from "@mui/icons-material/Face6";
 import LoginIcon from "@mui/icons-material/Login";
+import MessageIcon from '@mui/icons-material/Message';
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import "../App.css";
 
@@ -18,7 +19,8 @@ export default function Sidebar({ isOpen }) {
  const navItems = [
   { link: "/", name: "Dashboard", icon: <InsertChartIcon fontSize="inherit" /> },
   { link: "/forms", name: "Forms", icon: <FormatAlignJustifyIcon fontSize="inherit" /> },
-  { link: "/tables", name: "Tables", icon: <TableChartIcon fontSize="inherit" /> },
+  { link: "/tables", name: "Stock", icon: <TableChartIcon fontSize="inherit" /> },
+  { link: "/message", name: "Message", icon: <MessageIcon fontSize="inherit" /> },
   { link: "/orders", name: "Orders", icon: <CalendarMonthIcon fontSize="inherit" />, badge: "New" },
   { link: "/profile", name: "Profile", icon: <Face6Icon fontSize="inherit" /> },
   { link: "/logout", name: "Logout", icon: <LoginIcon fontSize="inherit" /> },

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import Sidebar from "./Sidebar";
 
+
+//put stock instead of tables
+
 export default function Tables() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [products, setProducts] = useState([]);
@@ -9,11 +12,11 @@ export default function Tables() {
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("https://fakestoreapi.com/products");
+     const res = await fetch("http://localhost:8080/api/products");
+
         if (!res.ok) throw new Error("Failed to fetch products");
         const data = await res.json();
         setProducts(data);
@@ -28,20 +31,17 @@ export default function Tables() {
 
   return (
     <div className="flex overflow-x-hidden">
-     
       <Sidebar isOpen={isSidebarOpen} />
 
       <div className="flex-1 overflow-x-hidden">
         <Nav onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
 
         <main className="pt-20 p-6 text-gray-900 bg-gradient-to-br from-indigo-900 via-blue-800 to-purple-900 min-h-screen flex justify-center">
-          
           <div className="relative shadow-2xl sm:rounded-2xl backdrop-blur-2xl bg-white/10 border border-white/20 p-8 mt-16 w-[90%] md:w-[80%] lg:w-[70%] overflow-x-auto">
             <h1 className="text-2xl font-bold text-white mb-6 tracking-wide text-center">
-              🛍️ E-Commerce Products
+              🛍️ Product List
             </h1>
 
-           
             {loading ? (
               <p className="text-gray-200 text-center text-xl py-10 animate-pulse">
                 Loading products...
@@ -101,7 +101,6 @@ export default function Tables() {
               </div>
             )}
 
-           
             <nav
               className="flex items-center justify-between pt-8"
               aria-label="Table navigation"
@@ -148,20 +147,14 @@ export default function Tables() {
         </main>
       </div>
 
-      
       {selectedProduct && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/70 backdrop-blur-sm z-50">
           <div className="bg-white/10 border border-white/20 rounded-2xl p-8 backdrop-blur-2xl w-[90%] md:w-[50%] text-white shadow-2xl">
             <h2 className="text-2xl font-bold mb-4 text-center">
               {selectedProduct.title}
             </h2>
-            <img
-              src={selectedProduct.image}
-              alt={selectedProduct.title}
-              className="w-40 h-40 object-contain mx-auto mb-4"
-            />
             <p className="text-lg mb-4 text-gray-200">
-              {selectedProduct.description}
+              Category: {selectedProduct.category}
             </p>
             <div className="flex justify-between text-lg mb-6">
               <span className="font-semibold text-blue-300">
