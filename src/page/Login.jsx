@@ -5,6 +5,7 @@ import { HiCheck, HiExclamation } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import API_BASE_URL from "../config";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,7 +18,9 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+       const response = await axios.post(`${API_BASE_URL}/api/auth/login`, formData);
+
+      // await axios.post("http://localhost:5000/api/auth/login", formData);
       if (response.data.success) {
         localStorage.setItem("token", response.data.token);
         setToast({ type: "success", message: "Login successful! Redirecting..." });

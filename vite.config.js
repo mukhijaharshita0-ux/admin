@@ -8,6 +8,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import fs from 'fs'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -20,4 +21,10 @@ export default defineConfig({
       dash: path.resolve(__dirname, 'src/dash'),
     },
   },
+  build: {
+    outDir: 'dist',
+  },
+  // ✅ ensure _redirects file is copied from public to dist after build
+  publicDir: 'public',
 })
+

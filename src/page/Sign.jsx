@@ -32,7 +32,8 @@ export default function Sign() {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const response = await axios.post(`${API_BASE_URL}/api/auth/sign`, formData);
+      // await axios.post("http://localhost:5000/api/auth/signup", formData);
 
       if (response.data.success) {
         setToast({ type: "success", message: "Account created successfully!" });

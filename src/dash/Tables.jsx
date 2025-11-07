@@ -3,7 +3,6 @@ import Nav from "./Nav";
 import Sidebar from "./Sidebar";
 
 
-//put stock instead of tables
 
 export default function Tables() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -15,7 +14,7 @@ export default function Tables() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-     const res = await fetch("http://localhost:8080/api/products");
+     const res = await fetch("http://localhost:5000/api/products");
 
         if (!res.ok) throw new Error("Failed to fetch products");
         const data = await res.json();
