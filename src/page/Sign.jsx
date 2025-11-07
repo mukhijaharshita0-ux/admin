@@ -32,8 +32,12 @@ export default function Sign() {
     }
 
     try {
+<<<<<<< HEAD
       const response = await axios.post(`${API_BASE_URL}/api/auth/sign`, formData);
       // await axios.post("http://localhost:5000/api/auth/signup", formData);
+=======
+      const response = await axios.post("https://admin-backend-pncw.onrender.com/api/auth/sign", formData);
+>>>>>>> 29b83a2aecbeb658d1a84b70967df57b3e4e19ed
 
       if (response.data.success) {
         setToast({ type: "success", message: "Account created successfully!" });
