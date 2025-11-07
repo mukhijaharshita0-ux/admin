@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 
+const API_BASE_URL = "https://admin-backend-pncw.onrender.com";
+
 export default function Sign() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -32,23 +34,27 @@ export default function Sign() {
     }
 
     try {
-<<<<<<< HEAD
-      const response = await axios.post(`${API_BASE_URL}/api/auth/sign`, formData);
-      // await axios.post("http://localhost:5000/api/auth/signup", formData);
-=======
-      const response = await axios.post("https://admin-backend-pncw.onrender.com/api/auth/sign", formData);
->>>>>>> 29b83a2aecbeb658d1a84b70967df57b3e4e19ed
+      const response = await axios.post(
+        `${API_BASE_URL}/api/auth/sign`,
+        formData
+      );
 
       if (response.data.success) {
-        setToast({ type: "success", message: "Account created successfully!" });
+        setToast({
+          type: "success",
+          message: "Account created successfully!",
+        });
         setTimeout(() => navigate("/login"), 1500);
       }
     } catch (error) {
-      setToast({ type: "error", message: error.response?.data?.message || "Error creating account" });
+      setToast({
+        type: "error",
+        message: error.response?.data?.message || "Error creating account",
+      });
     }
   };
 
-  // ✅ Google Login Logic
+  // ✅ Google login
   const googleLogin = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       try {
@@ -74,7 +80,8 @@ export default function Sign() {
               Create your account <br /> and start managing smarter!
             </h2>
             <p className="text-center text-blue-100 mb-8">
-              Join the ShopAdmin platform and simplify your e-commerce management today.
+              Join the ShopAdmin platform and simplify your e-commerce
+              management today.
             </p>
             <div className="bg-blue-500 p-6 rounded-2xl">
               <img
@@ -87,7 +94,9 @@ export default function Sign() {
 
           {/* Right Section */}
           <div className="w-1/2 p-10">
-            <h2 className="text-2xl font-bold text-center text-gray-800">Sign Up</h2>
+            <h2 className="text-2xl font-bold text-center text-gray-800">
+              Sign Up
+            </h2>
             <p className="text-center text-gray-500 mb-6 text-sm">
               Get started with your e-commerce dashboard
             </p>
@@ -123,6 +132,7 @@ export default function Sign() {
                   className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                   required
                 />
+
                 <input
                   type="password"
                   name="confirmPassword"
@@ -134,7 +144,6 @@ export default function Sign() {
                 />
               </div>
 
-              {/* Sign Up Button */}
               <button
                 type="submit"
                 className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
@@ -142,7 +151,6 @@ export default function Sign() {
                 <FaTelegramPlane /> Sign Up
               </button>
 
-              {/* Continue with Google */}
               <button
                 type="button"
                 onClick={() => googleLogin()}
@@ -155,7 +163,6 @@ export default function Sign() {
           </div>
         </div>
 
-        {/* Toast */}
         {toast && (
           <div className="fixed top-4 right-4">
             <Toast>
